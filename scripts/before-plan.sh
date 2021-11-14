@@ -1,4 +1,6 @@
 #/bin/sh
+brew tap fugue/regula
+brew install regula
 regula_exit_code=$(regula run | wc -l)
 tf_validation_code=$(terraform validate)
 echo ""
