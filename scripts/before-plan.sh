@@ -1,9 +1,4 @@
 #/bin/sh
-# This script is run before terraform plan is run to do the following actions:
-# 1. download and run regula on the IaC files in this repo
-# 2. run `terraform -fmt check` to ensure terraform is formatted correctly
-
-#https://github.com/fugue/regula/releases/download/v2.0.1/regula_2.0.1_Linux_arm64.tar.gz
 regula_exit_code=$(regula run | wc -l)
 tf_validation_code=$(terraform validate)
 echo ""
