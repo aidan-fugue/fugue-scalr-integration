@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/sh
 # This script is run before terraform plan is run to do the following actions:
 # 1. download and run regula on the IaC files in this repo
 # 2. run `terraform -fmt check` to ensure terraform is formatted correctly
