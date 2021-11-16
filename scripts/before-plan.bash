@@ -1,8 +1,4 @@
 #!/bin/bash
-mkdir regula
-cd regula
-curl -L "https://github.com/fugue/regula/releases/download/v2.0.1/regula_2.0.1_Linux_x86_64.tar.gz" | tar -xvz -C "$HOME/regula"
-mv /home/ubuntu/regula/regula /usr/local/bin
 regula_exit_code=$(regula run | wc -l)
 tf_validation_code=$(terraform validate)
 echo ""
