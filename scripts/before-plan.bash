@@ -1,7 +1,5 @@
 #!/bin/bash
-brew tap fugue/regula
-brew install regula
-regula_exit_code=$(regula run | wc -l)
+regula_exit_code=$(docker run --rm -t -v $(pwd):/workspace fugue/regula:v2.0.1 run | wc -l)
 tf_validation_code=$(terraform validate)
 echo ""
 tput setaf 4; echo "Checking your terraform for validity and CIS Benchmark compliance with regula."
