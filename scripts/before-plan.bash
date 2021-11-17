@@ -5,17 +5,19 @@ echo ""
 echo "Checking your terraform for validity and CIS Benchmark compliance with regula."
 echo ""
 if [ $regula_exit_code == 3 ] && [ $tf_validation_code == "Success! The configuration is valid." ]; then
-  echo "Terraform is valid and compliant."; exit 0
+  tput setab 2; echo "Terraform is valid and compliant."; exit 0
 else
-  echo "Error! Terraform Apply failed and/or regula run failed."
+  tput setaf 1; echo "Error! Terraform Apply failed and/or regula run failed."
   echo "Recommend running regula run and terraform validate again and fixing any errors you get."
   echo ""
   echo "See below for the errors we have detected:"
   echo ""
-  echo "Security and compliance errors:"
+  tput setaf 1; echo "Security and compliance errors:"
+  echo ""
   ./regula run
   echo ""
-  echo "Terraform errors:"
+  tput setaf 1; echo "Terraform errors:"
+  echo ""
   terraform validate
   echo ""; exit 1
 fi
