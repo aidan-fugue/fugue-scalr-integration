@@ -129,11 +129,6 @@ resource "aws_s3_bucket" "logbucket" {
     days = 90
     }
   }
-
-  logging {
-    target_bucket = "my-log-bucket"
-    target_prefix = "log/"
-  }
 }
 
 #Setting up a bucket policy for my logbucket
