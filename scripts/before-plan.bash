@@ -1,5 +1,5 @@
 #!/bin/bash
-regula_exit_code=$(regula run | wc -l)
+regula_exit_code=$(./regula run | wc -l)
 tf_validation_code=$(terraform validate)
 echo ""
 echo "Checking your terraform for validity and CIS Benchmark compliance with regula."
