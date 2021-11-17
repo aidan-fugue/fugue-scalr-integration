@@ -12,7 +12,7 @@ echo "Checking your terraform for validity and CIS Benchmark compliance with reg
 echo ""
 
 #logic to check for validity and, if not valid, throw an error and non-zero exit code
-if [ $regula_exit_code == 3 ] && [ $tf_validation_code == "Success! The configuration is valid." ]; then
+if [ $regula_exit_code == 2 ] && [ $tf_validation_code == "Success! The configuration is valid." ]; then
   echo "Terraform is valid and compliant."; exit 0
 else
   echo "Error! Terraform Apply failed and/or regula run failed."
