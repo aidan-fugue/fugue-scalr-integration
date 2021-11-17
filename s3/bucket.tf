@@ -47,21 +47,6 @@ resource "aws_s3_bucket" "demos3" {
     days = 90
     }
   }
-
-  replication_configuration {
-    role = "${aws_iam_role.replication.arn}"
-
-    rules {
-      id     = "ruleid"
-      prefix = "ruleprefix"
-      status = "Enabled"
-
-      destination {
-        bucket        = "${aws_s3_bucket.destination.arn}"
-        storage_class = "STANDARD"
-      }
-    }
-  }
 }
 
 #Blocking public access for my S3 bucket
@@ -148,21 +133,6 @@ resource "aws_s3_bucket" "logbucket" {
   logging {
     target_bucket = "my-log-bucket"
     target_prefix = "log/"
-  }
-    
-  replication_configuration {
-    role = "${aws_iam_role.replication.arn}"
-
-    rules {
-      id     = "ruleid"
-      prefix = "ruleprefix"
-      status = "Enabled"
-
-      destination {
-        bucket        = "${aws_s3_bucket.destination.arn}"
-        storage_class = "STANDARD"
-      }
-    }
   }
 }
 
