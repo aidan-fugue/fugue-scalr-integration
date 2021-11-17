@@ -9,5 +9,13 @@ if [ $regula_exit_code == 3 ] && [ $tf_validation_code == "Success! The configur
 else
   echo "Error! Terraform Apply failed and/or regula run failed."
   echo "Recommend running regula run and terraform validate again and fixing any errors you get."
+  echo ""
+  echo "See below for the errors we have detected:"
+  echo ""
+  echo "Security and compliance errors:"
+  ./regula run
+  echo ""
+  echo "Terraform errors:"
+  terraform validate
   echo ""; exit 1
 fi
