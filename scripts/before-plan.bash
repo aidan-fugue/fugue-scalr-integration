@@ -7,20 +7,25 @@
 regula_exit_code=$(./regula run --include waivers.rego | wc -l)
 tf_validation_code=$(terraform validate | wc -l)
 
+#Setting color variables for outputs
+green='\033[0;32m'
+clear='\033[0m'
+red='\033[0;31m'
+
 #Initial run message to tell me that the script it checking my terraform
 echo "Checking your terraform for validity and CIS Benchmark compliance with regula..."
 echo ""
 
 #logic to check for validity and, if not valid, throw an error and non-zero exit code
 if [ $regula_exit_code == 2 ] && [ "$tf_validation_code" == 2 ]; then
-  echo "Terraform is valid and compliant."; exit 0
+  echo -e "${green}Terraform is valid and compliant.${clear}"; exit 0
 else
-  echo "Error! Terraform Apply failed and/or regula run failed."
+  echo "${red}Error! Terraform Apply failed and/or regula run failed.${clear}"
   echo ""
-  echo "Security and compliance errors:"
+  echo "${red}Security and compliance errors:${clear}"
   echo ""
   ./regula run --include waivers.rego
-  echo "Terraform errors:"
+  echo "${red}Terraform errors:${clear}"
   echo ""
   terraform validate
   echo ""; exit 1
