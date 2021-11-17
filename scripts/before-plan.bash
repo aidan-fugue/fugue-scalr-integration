@@ -4,7 +4,7 @@
 #with Regula (https://regula.dev/).
 
 #Setting variables: length of regula run and terraform validate output
-a=$(regula run --exclude FG_R00275)
+a=$(./regula run --exclude FG_R00275)
 arr=("$a")
 tf_validation_code=$(terraform validate)
 
@@ -20,7 +20,7 @@ else
   echo ""
   echo "Security and compliance errors:"
   echo ""
-  regula run --exclude FG_R00275
+  ./regula run --exclude FG_R00275
   echo "Terraform errors:"
   echo ""
   terraform validate
