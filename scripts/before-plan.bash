@@ -20,12 +20,12 @@ echo ""
 if [ $regula_exit_code == 2 ] && [ "$tf_validation_code" == 2 ]; then
   echo -e "${green}Terraform is valid and compliant.${clear}"; exit 0
 else
-  echo "${red}Error! Terraform Apply failed and/or regula run failed.${clear}"
+  echo -e "${red}Error! Terraform Apply failed and/or regula run failed.${clear}"
   echo ""
-  echo "${red}Security and compliance errors:${clear}"
+  echo -e "${red}Security and compliance errors:${clear}"
   echo ""
   ./regula run --include waivers.rego
-  echo "${red}Terraform errors:${clear}"
+  echo -e "${red}Terraform errors:${clear}"
   echo ""
   terraform validate
   echo ""; exit 1
