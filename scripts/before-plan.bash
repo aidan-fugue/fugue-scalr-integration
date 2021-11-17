@@ -4,7 +4,7 @@
 #with Regula (https://regula.dev/).
 
 #Setting variables: length of regula run and terraform validate output
-regula_exit_code=$(./regula run | wc -l)
+regula_exit_code=$(./regula run --severity high | wc -l)
 tf_validation_code=$(terraform validate)
 
 #Initial run message to tell me that the script it checking my terraform
