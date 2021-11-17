@@ -4,7 +4,7 @@
 #with Regula (https://regula.dev/).
 
 #Setting variables: length of regula run and terraform validate output
-regula_exit_code=$(./regula run | wc -l)
+regula_exit_code=$(./regula run --include waivers.rego | wc -l)
 tf_validation_code=$(terraform validate | wc -l)
 
 #Initial run message to tell me that the script it checking my terraform
@@ -19,7 +19,7 @@ else
   echo ""
   echo "Security and compliance errors:"
   echo ""
-  ./regula run
+  ./regula run --include waivers.rego
   echo "Terraform errors:"
   echo ""
   terraform validate
