@@ -78,7 +78,7 @@ See below for how I fixed Fugue rules `FG_R00036` and `FG_R00101`, then re-check
 
 With my infrastructure properly configured, I'll commit to my GitHub repository again to maximize Scalr's terraform automation capability.
 This will run my `before_plan.bash` script to ensure I pass `terraform validate` and `regula run`, then (if that is successful) Scalr will run `terraform plan`.
-Following this, Sclar will use my next custom hook to run my next script (`after_plan.bash`) to ensure each `.tf` file is formatted according to the HCL canonical standard (`terraform fmt`).
+Following this, Scalr will use my next custom hook to run my next script (`after_plan.bash`) to ensure each `.tf` file is formatted according to the HCL canonical standard (`terraform fmt`).
 This is a cool terraform feature that will automatically fix formatting issues (see below for this in action -- I purposefully left some errors to demonstrate this):
 
 ![terraform fmt](/img/terraform_fmt.gif "proper .tf formatting")
