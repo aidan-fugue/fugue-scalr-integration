@@ -7,11 +7,11 @@
 #Adding the demos3 bucket
 resource "aws_s3_bucket" "demos3" {
   bucket = "my-scalr-fugue-test-bucket-2731"
-  acl    = "${var.acl_value}"
+  acl    = var.acl_value
 
   #FG_R00274
   logging {
-    target_bucket       = "${aws_s3_bucket.logbucket.id}"
+    target_bucket = aws_s3_bucket.logbucket.id
     target_prefix = "log/"
   }
 
@@ -19,33 +19,33 @@ resource "aws_s3_bucket" "demos3" {
     rule {
       apply_server_side_encryption_by_default {
         #Un-comment below to satisfy FG_R00099
-        kms_master_key_id = "${aws_kms_key.mykey.arn}"
+        kms_master_key_id = aws_kms_key.mykey.arn
         sse_algorithm     = "aws:kms"
       }
     }
   }
   versioning {
     #Un-comment below to satisfy FG_R00101
-    #enabled = true
-    enabled = false
+    enabled = true
+    #enabled = false
   }
 
   lifecycle_rule {
     prefix  = "config/"
     enabled = true
 
-  noncurrent_version_transition {
-    days          = 30
-    storage_class = "STANDARD_IA"
+    noncurrent_version_transition {
+      days          = 30
+      storage_class = "STANDARD_IA"
     }
 
-  noncurrent_version_transition {
-    days          = 60
-    storage_class = "GLACIER"
+    noncurrent_version_transition {
+      days          = 60
+      storage_class = "GLACIER"
     }
 
-  noncurrent_version_expiration {
-    days = 90
+    noncurrent_version_expiration {
+      days = 90
     }
   }
 }
@@ -53,17 +53,17 @@ resource "aws_s3_bucket" "demos3" {
 #Blocking public access for my S3 bucket
 resource "aws_s3_bucket_public_access_block" "private" {
   # Un-comment below to satisfy FG_R00229
-  bucket    =               "${aws_s3_bucket.demos3.id}"
-  block_public_acls          = true
-  block_public_policy    = true
-  ignore_public_acls                = true
-  restrict_public_buckets      = true
+  bucket                  = aws_s3_bucket.demos3.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 #Setting up a bucket policy for my demos3 bucket
 resource "aws_s3_bucket_policy" "b" {
   #Un-comment below to satisfy FG_R00100
-  bucket = "${aws_s3_bucket.demos3.id}"
+  bucket = aws_s3_bucket.demos3.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -94,14 +94,14 @@ resource "aws_s3_bucket_policy" "b" {
 
 #Logging bucket for my demos3 bucket
 resource "aws_s3_bucket" "logbucket" {
-  bucket        = "my-log-bucket-for-demos3"
-  acl           = "log-delivery-write"
+  bucket = "my-log-bucket-for-demos3"
+  acl    = "log-delivery-write"
 
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
         #Un-comment below to satisfy FG_R00099
-        #kms_master_key_id = "${aws_kms_key.mykey.arn}"
+        kms_master_key_id = aws_kms_key.mykey.arn
         sse_algorithm     = "aws:kms"
       }
     }
@@ -109,26 +109,26 @@ resource "aws_s3_bucket" "logbucket" {
 
   versioning {
     #Un-comment below to satisfy FG_R00101
-    #enabled = true
-    enabled = false
+    enabled = true
+    #enabled = false
   }
 
   lifecycle_rule {
     prefix  = "config/"
     enabled = true
 
-  noncurrent_version_transition {
-    days          = 30
-    storage_class = "STANDARD_IA"
+    noncurrent_version_transition {
+      days          = 30
+      storage_class = "STANDARD_IA"
     }
 
-  noncurrent_version_transition {
-    days          = 60
-    storage_class = "GLACIER"
+    noncurrent_version_transition {
+      days          = 60
+      storage_class = "GLACIER"
     }
 
-  noncurrent_version_expiration {
-    days = 90
+    noncurrent_version_expiration {
+      days = 90
     }
   }
 }
@@ -136,7 +136,7 @@ resource "aws_s3_bucket" "logbucket" {
 #Setting up a bucket policy for my logbucket
 resource "aws_s3_bucket_policy" "b1" {
   #Un-comment below to satisfy FG_R00100
-  bucket = "${aws_s3_bucket.logbucket.id}"
+  bucket = aws_s3_bucket.logbucket.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -164,11 +164,11 @@ resource "aws_s3_bucket_policy" "b1" {
 #Blocking public access for my logging bucket
 resource "aws_s3_bucket_public_access_block" "private2" {
   # Un-comment below to satisfy FG_R00229
-  bucket    =               "${aws_s3_bucket.logbucket.id}"
-  block_public_acls          = true
-  block_public_policy    = true
-  ignore_public_acls                = true
-  restrict_public_buckets      = true
+  bucket                  = aws_s3_bucket.logbucket.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 ########################################################
@@ -178,5 +178,5 @@ resource "aws_s3_bucket_public_access_block" "private2" {
 #Setting a kms key for my S3 bucket
 resource "aws_kms_key" "mykey" {
   #Un-comment below to satisfy FG_R00036
-  #enable_key_rotation = true
+  enable_key_rotation = true
 }

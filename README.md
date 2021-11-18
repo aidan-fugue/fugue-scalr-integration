@@ -27,22 +27,44 @@ Regula and Scalr work together below to stop misconfigured infrastructure from b
 terraform validate
 ```
 
-Insert GIF of failed build here
-
-
-##### `/after-plan.bash`
-Adjusts formatting per HCL canonical standards
-```bash
-terraform fmt $f
-```
-(where $f = all files in repo with .tf extensions)
-
-### The full pipeline
+#### Trying (and failing) a build
+When I try to run...
 ```
 git add <files>
 git commit -m "initiating the scalr terraform pipeline
 git push
 ```
+...Scalr will detect that I have commited changes to my repository, and will call Regula to scan my IaC for security and compliance issues:
+
+![failed build](/img/failed_build.gif "failed build")
+
+#### Resolving configuration issues with Regula
+
+Now that I know I have misconfigurations in my Terraform files, I can go back into my repo in VSCode and execute a `regula run` locally to address those issues.
+Alternatively, I could export the output of the `regula run` that occurred in my Scalr run.
+I set up this repository to allow me to un-comment my Terraform code corrections easily, but properly configuring your infrasructure is as easy as clicking the hyperlink that populates with every rule following a `regula run`.
+See below for how I fixed Fugue rules `FG_R00036` and `FG_R00101`, then re-checked my infrasructure with a final `regula run`.
+
+![fixing regula issues](/img/fixing_issues.gif "fixing issues")
+
+#### Trying (and succeeding!) a build
+
+With my infrastructure properly configured, I'll commit to my GitHub repository again to maximize Scalr's Terraform automation capability.
+This will run my `before_plan.bash` script to ensure I pass `terraform validate` and `regula run`, then (if that is successful) Scalr will run `terraform plan`.
+Following this, Sclar will use my next custom hook to run my next script (`after_plan.bash`) to ensure each `.tf` file is formatted according to the HCL canonical standard (`terraform fmt`).
+This is a cool Terraform feature that will automatically fix formatting issues (see below for this in action -- I purposefully left some errors to demonstrate this):
+
+![terraform fmt](/img/terraform_fmt.gif "proper .tf formatting")
+
+I'll re-run the commands I ran initially...
+```
+git add <files>
+git commit -m "initiating the scalr terraform pipeline
+git push
+```
+...resulting in a successful build:
+
+![successful build](/img/successful_build.gif "successful build")
 
 ### Waivers
 ```go
