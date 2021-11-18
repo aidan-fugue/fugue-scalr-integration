@@ -51,7 +51,7 @@ resource "aws_s3_bucket" "demos3" {
 }
 
 #Blocking public access for my S3 bucket
-resource "aws_s3_bucket_public_access_block" "private" {
+resource "aws_s3_bucket_public_access_block" "private12345" {
   # Un-comment below to satisfy FG_R00229
   bucket                  = aws_s3_bucket.demos3.id
   block_public_acls       = true
@@ -162,7 +162,7 @@ resource "aws_s3_bucket_policy" "b1" {
 }
 
 #Blocking public access for my logging bucket
-resource "aws_s3_bucket_public_access_block" "private2" {
+resource "aws_s3_bucket_public_access_block" "private23456" {
   # Un-comment below to satisfy FG_R00229
   bucket                  = aws_s3_bucket.logbucket.id
   block_public_acls       = true
