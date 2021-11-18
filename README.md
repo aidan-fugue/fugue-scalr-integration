@@ -92,3 +92,5 @@ git push
 ...resulting in a successful build:
 
 ![successful build](/img/successful_build.gif "successful build")
+
+And that's it! Now we have a Regula/Scalr pipeline to securely automate the deployment of cloud infrastructure using terraform.
