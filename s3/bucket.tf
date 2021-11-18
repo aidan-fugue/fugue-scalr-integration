@@ -6,7 +6,7 @@
 
 #Adding the demos3 bucket
 resource "aws_s3_bucket" "demos3" {
-  bucket = "my-scalr-fugue-test-bucket-2731"
+  bucket = "my-scalr-fugue-test-bucket-27311812"
   acl    = var.acl_value
 
   #FG_R00274
@@ -94,7 +94,7 @@ resource "aws_s3_bucket_policy" "b" {
 
 #Logging bucket for my demos3 bucket
 resource "aws_s3_bucket" "logbucket" {
-  bucket = "my-log-bucket-for-demos3"
+  bucket = "my-log-bucket-for-demos3-18122617"
   acl    = "log-delivery-write"
 
   server_side_encryption_configuration {
