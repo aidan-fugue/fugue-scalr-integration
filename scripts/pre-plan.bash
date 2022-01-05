@@ -33,6 +33,6 @@ ls ../
 echo ""
 echo "Run Regula"
 echo ""
-cd ../ && /s3/regula run
+cd ../ && regula run
 #./regula run *.tf
 #./regula run ../*.tf
