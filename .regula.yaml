@@ -2,7 +2,7 @@ environment-id: ""
 exclude: []
 format: text
 include:
-- waivers.rego
+#- waivers.rego
 input-type:
 - auto
 no-built-ins: false
