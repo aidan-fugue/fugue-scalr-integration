@@ -15,13 +15,15 @@ echo ""
 chmod 755 regula
 
 echo ""
-echo "Current Regula version:"
+echo "Working directory:"
 echo ""
-#regula version
 pwd
+
+echo "Contents of working directory"
 ls
 
 echo ""
 echo "Run Regula"
 echo ""
-regula run
+/opt/workdir/s3/regula run *.tf
+/opt/workdir/s3/regula run ../*/tf
