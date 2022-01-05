@@ -10,21 +10,23 @@ echo ""
 tar -zxvf regula_2.3.0_Linux_x86_64.tar.gz regula
 
 echo ""
-echo "Modifying Regula executable!"
-echo ""
-chmod u+x regula
-
-echo ""
 echo "Moving Regula"
 echo ""
 mv regula ../
+
+echo ""
+echo "Modifying Regula executable!"
+echo ""
+chmod u+x regula
 
 echo ""
 echo "Working directory:"
 echo ""
 pwd
 
+echo ""
 echo "Contents of working directory"
+echo ""
 ls
 
 echo "Contents of parent directory"
@@ -33,6 +35,7 @@ ls ../
 echo ""
 echo "Run Regula"
 echo ""
-cd ../ && regula run
+cd ../
+regula run
 #./regula run *.tf
 #./regula run ../*.tf
