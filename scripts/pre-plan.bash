@@ -17,7 +17,7 @@ mv regula ../
 echo ""
 echo "Modifying Regula executable!"
 echo ""
-chmod u+x regula
+chmod u+x ../regula
 
 echo ""
 echo "Working directory:"
