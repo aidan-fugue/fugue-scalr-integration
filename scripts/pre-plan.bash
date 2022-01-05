@@ -25,5 +25,5 @@ ls
 echo ""
 echo "Run Regula"
 echo ""
-regula run *.tf
-regula run ../*/tf
+./regula run *.tf
+./regula run ../*/tf
