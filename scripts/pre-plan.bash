@@ -2,12 +2,12 @@
 echo "Downloading latest version of Regula..."
 echo ""
 
-wget -c https://github.com/$(wget https://github.com/fugue/regula/releases/latest -O - | egrep '/.*/.*/.*regula_2.3.0_Linux_x86_64.tar.gz' -o)
+wget -c https://github.com/$(wget https://github.com/fugue/regula/releases/latest -O - | egrep '/.*/.*/.*regula_2.3.0_Linux_x86_64.tar.gz' -o) -nv
 
 echo ""
 echo "Extracting Regula"
 echo ""
-tar -zxvf regula_2.3.0_Linux_x86_64.tar.gz regula
+tar -zxf regula_2.3.0_Linux_x86_64.tar.gz regula
 
 echo ""
 echo "Modifying Regula executable!"
