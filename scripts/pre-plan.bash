@@ -17,7 +17,9 @@ chmod 755 regula
 echo ""
 echo "Current Regula version:"
 echo ""
-regula version
+#regula version
+pwd
+ls
 
 echo ""
 echo "Run Regula"
