@@ -25,5 +25,5 @@ ls
 echo ""
 echo "Run Regula"
 echo ""
-/opt/workdir/s3/regula run *.tf
-/opt/workdir/s3/regula run ../*/tf
+/opt/workdir/s3/regula/regula run *.tf
+/opt/workdir/s3/regula/regula run ../*/tf
