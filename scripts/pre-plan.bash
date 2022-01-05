@@ -15,4 +15,4 @@ echo ""
 echo -e "${green}Running Regula on your Terraform...${clear}"
 echo ""
 cd ../
-./regula run
+./regula run -s critical
