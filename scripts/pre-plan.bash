@@ -7,7 +7,7 @@ wget -c https://github.com/$(wget https://github.com/fugue/regula/releases/lates
 echo ""
 echo "Extracting Regula"
 echo ""
-tar -zxvf regula_2.3.0_Linux_x86_64.tar.gz -O > regula
+tar -zxvf regula_2.3.0_Linux_x86_64.tar.gz regula
 
 echo ""
 echo "Modifying Regula executable!"
@@ -20,7 +20,7 @@ echo ""
 pwd
 
 echo "Contents of working directory"
-ls regula
+ls
 
 echo ""
 echo "Run Regula"
