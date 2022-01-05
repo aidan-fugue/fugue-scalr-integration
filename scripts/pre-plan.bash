@@ -20,10 +20,10 @@ echo ""
 pwd
 
 echo "Contents of working directory"
-ls
+ls regula
 
 echo ""
 echo "Run Regula"
 echo ""
-./regula run *.tf
-./regula run ../*/tf
+./regula/regula run *.tf
+./regula run/regula ../*/tf
