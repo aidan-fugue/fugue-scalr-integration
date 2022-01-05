@@ -10,7 +10,7 @@ echo ""
 tar -zxvf regula_2.3.0_Linux_x86_64.tar.gz -O > regula
 
 echo ""
-echo "Modifying Regula executable"
+echo "Modifying Regula executable!"
 echo ""
 chmod u+x regula
 
