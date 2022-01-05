@@ -12,7 +12,7 @@ tar -zxvf regula_2.3.0_Linux_x86_64.tar.gz -O > regula
 echo ""
 echo "Modifying Regula executable"
 echo ""
-chmod 755 regula
+chmod 755 regula/regula
 
 echo ""
 echo "Working directory:"
@@ -25,5 +25,5 @@ ls
 echo ""
 echo "Run Regula"
 echo ""
-/opt/workdir/s3/regula/regula run *.tf
+regula run *.tf
 /opt/workdir/s3/regula/regula run ../*/tf
