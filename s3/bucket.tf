@@ -19,8 +19,8 @@ resource "aws_s3_bucket" "demos3" {
     rule {
       apply_server_side_encryption_by_default {
         #Un-comment below to satisfy FG_R00099
-        #kms_master_key_id = aws_kms_key.mykey.arn
-        #sse_algorithm     = "aws:kms"
+        kms_master_key_id = aws_kms_key.mykey.arn
+        sse_algorithm     = "aws:kms"
       }
     }
   }
