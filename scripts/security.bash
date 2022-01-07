@@ -21,9 +21,9 @@ cd ../
 
 rc=$?
 if [[ $rc != 0 ]]; then
-    echo -e "\n${red}Please fix your security and compliance violations, then re-run the Scalr pipeline.${clear}\n";
+    echo -e "\n${red}Please fix your security and compliance violations, then re-run the Scalr pipeline.${clear}\n"; exit 1
   else 
-    echo -e "\n${green}Security and compliance check passed successfully! Moving on to the next step in the Scalr pipeline.${clear}\n"
+    echo -e "\n${green}Security and compliance check passed successfully! Moving on to the next step in the Scalr pipeline.${clear}\n"; exit 0
     #(Optional) Send results of security and compliance scan to Fugue UI
     #./regula run --sync --upload
   fi
