@@ -5,8 +5,6 @@
 green='\033[0;32m'
 clear='\033[0m'
 red='\033[0;31m'
-bold=$(tput bold)
-norm=$(tput sgr0)
 
 echo -e "\n${green}Validating and fixing the formatting of your Terraform...${clear}\n"
 terraform init && terraform fmt && terraform validate
