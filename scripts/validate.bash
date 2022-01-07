@@ -8,12 +8,12 @@ red='\033[0;31m'
 bold=$(tput bold)
 norm=$(tput sgr0)
 
-echo -e "\n${green}${bold}Validating and fixing the formatting of your Terraform...${clear}${norm}\n"
+echo -e "\n${green}Validating and fixing the formatting of your Terraform...${clear}\n"
 terraform init && terraform fmt && terraform validate
 
 rc=$?
 if [[ $rc != 0 ]]; then
-    echo -e "\n${red}${bold}Please fix the Terraform issues identified above, then re-run the Scalr pipeline.${clear}${norm}\n";
+    echo -e "\n${red}Please fix the Terraform issues identified above, then re-run the Scalr pipeline.${clear}\n";
   else 
-    echo -e "${green}${bold}\nTerraform checks passed successfully!${clear}${norm}\n"
+    echo -e "${green}\nTerraform checks passed successfully!${clear}\n"
   fi

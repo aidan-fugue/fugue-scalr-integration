@@ -5,8 +5,6 @@
 green='\033[0;32m'
 clear='\033[0m'
 red='\033[0;31m'
-bold=$(tput bold)
-norm=$(tput sgr0)
 
 #Downloading the latest version of Regula
 wget -c -nv https://github.com/$(wget -nv \
@@ -17,15 +15,15 @@ egrep '/.*/.*/.*_Linux_x86_64.tar.gz' -o)
 tar -zxf regula_2.3.0_Linux_x86_64.tar.gz regula
 
 #Scanning for CIS Benchmark security and compliance violations
-echo -e "\n${green}${bold}Scanning the security and compliance of your Terraform against CIS Benchmarks with Regula...${clear}${norm} \n"
+echo -e "\n${green}Scanning the security and compliance of your Terraform against CIS Benchmarks with Regula...${clear} \n"
 cd ../
 ./regula run --include waivers.rego
 
 rc=$?
 if [[ $rc != 0 ]]; then
-    echo -e "\n${red}${bold}Please fix your security and compliance violations, then re-run the Scalr pipeline.${clear}${norm}\n";
+    echo -e "\n${red}Please fix your security and compliance violations, then re-run the Scalr pipeline.${clear}\n";
   else 
-    echo -e "\n${green}${bold}Security and compliance check passed successfully! Moving on to the next step in the Scalr pipeline.${clear}${norm}\n"
+    echo -e "\n${green}Security and compliance check passed successfully! Moving on to the next step in the Scalr pipeline.${clear}\n"
     #(Optional) Send results of security and compliance scan to Fugue UI
     #./regula run --sync --upload
   fi
