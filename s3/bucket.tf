@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "demos3" {
       apply_server_side_encryption_by_default {
         #Un-comment below to satisfy FG_R00099
         #kms_master_key_id = aws_kms_key.mykey.arn
-        #sse_algorithm     = "aws:kms"
+        sse_algorithm     = "aws:kms"
       }
     }
   }
@@ -105,16 +105,15 @@ resource "aws_s3_bucket" "logbucket" {
     rule {
       apply_server_side_encryption_by_default {
         #Un-comment below to satisfy FG_R00099
-        kms_master_key_id = aws_kms_key.mykey.arn
+        #kms_master_key_id = aws_kms_key.mykey.arn
         sse_algorithm     = "aws:kms"
       }
     }
   }
 
   versioning {
-    #Un-comment below to satisfy FG_R00101
-    enabled = true
-    #enabled = false
+    #Make below = true to satisfy FG_R00101
+    enabled = false
   }
 
   lifecycle_rule {
@@ -181,6 +180,6 @@ resource "aws_s3_bucket_public_access_block" "private23456" {
 
 #Setting a kms key for my S3 bucket
 resource "aws_kms_key" "mykey" {
-  #Un-comment below to satisfy FG_R00036
-  enable_key_rotation = true
+  #Make below = true to satisfy FG_R00036
+  enable_key_rotation = false
 }
