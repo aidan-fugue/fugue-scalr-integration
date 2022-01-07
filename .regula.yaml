@@ -1,8 +1,6 @@
-environment-id: ""
+environment-id: 5a56db09-624f-48da-adf5-4b341dd1d691
 exclude: []
 format: text
-include:
-#- waivers.rego
 input-type:
 - auto
 no-built-ins: false
@@ -10,3 +8,16 @@ no-ignore: false
 only: []
 severity: unknown
 sync: false
+include:
+- waivers.rego
+# exclude: []
+# format: text
+# include: []
+# input-type:
+#     - auto
+# inputs: []
+# no-built-ins: false
+# no-ignore: false
+# only: []
+# severity: unknown
+# sync: false

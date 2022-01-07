@@ -25,5 +25,5 @@ if [[ $rc != 0 ]]; then
   else 
     echo -e "\n${green}Security and compliance check passed successfully! Moving on to the next step in the Scalr pipeline.${clear}\n"; exit 0
     #(Optional) Send results of security and compliance scan to Fugue UI
-    #./regula run --sync --upload
+    ./regula run --sync --upload
   fi
