@@ -13,5 +13,5 @@ rc=$?
 if [[ $rc != 0 ]]; then
     echo -e "\n${red}Please fix the Terraform issues identified above, then re-run the Scalr pipeline.${clear}\n";
   else 
-    echo -e "${green}\nTerraform checks passed successfully!${clear}\n"
+    echo -e "\n${green}Terraform checks passed successfully!${clear}\n"
   fi

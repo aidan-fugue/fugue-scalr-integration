@@ -17,8 +17,7 @@ tar -zxf regula_2.3.0_Linux_x86_64.tar.gz regula
 #Scanning for CIS Benchmark security and compliance violations
 echo -e "\n${green}Scanning the security and compliance of your Terraform against CIS Benchmarks with Regula...${clear} \n"
 cd ../
-#./regula run --include waivers.rego
-./regula run --only FG_R00001
+./regula run --include waivers.rego
 
 rc=$?
 if [[ $rc != 0 ]]; then
