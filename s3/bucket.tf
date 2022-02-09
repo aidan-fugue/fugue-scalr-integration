@@ -3,8 +3,6 @@ provider "aws" {
 }
 //#S3 Bucket Terraform File
 
-// Setting up the demos3 bucket
-
 //Adding the demos3 bucket
 resource "aws_s3_bucket" "demos3" {
   bucket = "my-scalr-fugue-test-bucket-27311812"
@@ -88,11 +86,9 @@ resource "aws_s3_bucket_policy" "b" {
   })
 }
 
-########################################################
-# Setting up my logging bucket for my demos3 bucket
-########################################################
+// Setting up my logging bucket for my demos3 bucket
 
-#Logging bucket for my demos3 bucket
+//Logging bucket for my demos3 bucket
 resource "aws_s3_bucket" "logbucket" {
   bucket = "my-log-bucket-for-demos3-18122617"
   acl    = "log-delivery-write"
