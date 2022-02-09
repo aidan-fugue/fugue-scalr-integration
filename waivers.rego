@@ -14,4 +14,9 @@ rules[rule] {
     "rule_id": "FG_R00275",
     "status": "DISABLED"
   }
+} {
+    rule := {
+        "rule_id": "FG_R00274",
+        "status": "DISABLED"
+    }
 }
